@@ -33,11 +33,11 @@
 
     <div class="container">
     <div class="sidebar">
-    <nav class="">
+    <nav>
         <ul class="list-unstyled main-menu">
           <li class="text-right">
             <a href="#" id="nav-close">X</a></li>
-          <div>
+          <div style="padding-top:30px">
             <label for="logger-type">Logger Type:</label>
             <select class="form-control" id="logger-type">
               <option>N/A</option>
@@ -131,7 +131,7 @@
     </div>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="col-md-9" id="wrapper_map">
+    <div class="col-md-9" id="wrapper_map" style="height:100%;">
       <div id="map"/>
     </div>
 
@@ -152,6 +152,7 @@
         $('#nav-expander').on('click',function(e){
       		e.preventDefault();
       		$('body').toggleClass('nav-expanded');
+          activateAndResetFields();
       	});
       	$('#nav-close').on('click',function(e){
       		e.preventDefault();

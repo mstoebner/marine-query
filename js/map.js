@@ -29,15 +29,14 @@ function initmap() {
         var cM = map.project(centerMarker.popup._latlng);
         $("nav").scrollTop(0);
         populateAllFields(centerMarker.popup._source._myId);
-        cM.y -= centerMarker.popup._container.clientHeight-100;
+        cM.y -= centerMarker.popup._container.clientHeight-200;
         cM.x -= centerMarker.popup._container.clientWidth-180;
         map.panTo(map.unproject(cM), {animate: true});
         });
 
   map.on('popupclose', function(){
     $('body').removeClass('nav-expanded');
-    activateFields();
-    initdata();
+    activateAndResetFields();
   });
 };
 

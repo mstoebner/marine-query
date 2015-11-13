@@ -7632,9 +7632,9 @@ function initdata(){
                 visited.push(this.state_province);
                 $('<option>' + this.state_province + '</option>').appendTo($state);
             }
-            if($.inArray(this.site, visited)<0){
-                visited.push(this.site);
-                $('<option>' + this.site + '</option>').appendTo($site);
+            if($.inArray(this.location, visited)<0){
+                visited.push(this.location);
+                $('<option>' + this.location + '</option>').appendTo($site);
             }
             if($.inArray(this.wave_exp, visited)<0 && this.wave_exp != 'N/A'){
                 visited.push(this.wave_exp);
@@ -7670,6 +7670,24 @@ function initdata(){
         })
     };
 
+    // filter the markers baised on the filter selections
+    // function filterMarkers(L, map){
+    //     $(document).ready(function() {
+    //         $.each(data, function(){
+    //             var logger = document.getElementById("logger-type");
+    //             var country = document.getElementById("country");
+    //             var location = document.getElementById("location");
+    //             var strUser = e.options[e.selectedIndex].text;
+    //             if(document.getElementById("location") != "N/A"){
+
+
+    //             }
+                
+                
+    //         }
+    //     }
+    // }
+
     // Autofills one field
     function populateField(selectedFiled, selected){
         var field = document.getElementById(selectedFiled);
@@ -7679,10 +7697,8 @@ function initdata(){
 
     // Autofills the drop downs in the filter
     function populateAllFields(markerID){
-        console.log(markerID)
         $(document).ready(function() {
             $.each(data, function(){
-                console.log(this.microsite_id === markerID);
                 if(this.microsite_id === markerID){
                     populateField('logger-type', this.biomimic);
                     populateField('country', this.country);
@@ -7697,6 +7713,7 @@ function initdata(){
         })
         }
 
+    // Make the auto filled filter fields inactive
     function deactivateFields(){
         document.getElementById('logger-type').disabled=true;
         document.getElementById('country').disabled=true;
@@ -7707,7 +7724,15 @@ function initdata(){
         document.getElementById('sub-zone').disabled=true;
     }
 
-    function activateFields(){
+    // activate and reset the filter fields
+    function activateAndResetFields(){
+        populateField('logger-type', 'N/A');
+        populateField('country', 'N/A');
+        populateField('state', 'N/A');
+        populateField('site', 'N/A');
+        populateField('wave', 'N/A');
+        populateField('zone', 'N/A');
+        populateField('sub-zone', 'N/A');
         document.getElementById('logger-type').disabled=false;
         document.getElementById('country').disabled=false;
         document.getElementById('state').disabled=false;
@@ -7716,5 +7741,24 @@ function initdata(){
         document.getElementById('zone').disabled=false;
         document.getElementById('sub-zone').disabled=false;
     }
+
+    // function filterData(){
+    //      $(document).ready(function() {
+    //         var logger = document.getElementById("logger-type");
+    //         var loggerStr = logger.options[logger.selectedIndex].text;
+    //         var country = document.getElementById("country");
+    //         var countryStr = country.options[country.selectedIndex].text;
+    //         var state = document.getElementById("state");
+    //         var stateStr = state.options[state.selectedIndex].text;
+    //         var location = document.getElementById("location");
+    //         var locationStr = location.options[location.selectedIndex].text;
+
+    //         if(loggerStr != "N/A"){
+                
+    //         }
+    //     }
+    // }
+
+
 
 
